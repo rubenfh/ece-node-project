@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/head %>
+</head>
+
+<div class="container Accueil">
+    <header class="Accueil-Header">
+        <h1>NODE PROJECT</h1>
+    </header>
+
+    <p>WELCOME TO THE NODE PROJECT</p>
+
+    <p>
+        <Link to="/inscription">
+        <div class="btn">
+            Sign up
+        </div>
+        </Link>
+    </p>
+
+    <p>
+        <Link to="/connexion">
+        <div class="btn">
+            Sign in
+        </div>
+        </Link>
+    </p>
+
+</div>
+    <script>
+        $("#show-metrics").click(e => {
+            e.preventDefault();
+            $.getJSON("/metrics.json", {}, data => {
+                const content = data.map(d => {
+                    return "timestamp: " + d.timestamp + ", value: " + d.value + "";
+                });
+                $("#metrics").append(content.join("\n"));
+            });
+        });
+    </script>
+</body>
+
+</html>

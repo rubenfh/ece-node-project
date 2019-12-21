@@ -39,22 +39,16 @@ Router.get("/", (req: any, res: any) => {
   res
     .type("html")
     .status(200)
-    .render("hello.ejs")
+    .render("homepage.ejs")
 });
 
-Router.get("/hello", (req: any, res: any) => {
-  if (req.query.name) {
-    res.render("hello.ejs", {
-      name:
-        req.query.name === "ruben"
-          ? "ruben, designer of this page"
-          : req.query.name
-    });
-  } else {
+Router.get("/signin", (req: any, res: any) => {
+  
     res
-      .type("html")
-      .status(404)
-      .send(f_404());
-  }
+        .type("html")
+        .status(200)
+        .render("signin.ejs")
+        
+  
 });
 module.exports = Router;
