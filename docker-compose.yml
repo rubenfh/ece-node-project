@@ -2,13 +2,14 @@ version: "3"
 services:
     mongodb:
         image: mongo:4.0.5
-        container_name: "MongoDB"
+        env_file: .env
+        container_name: "mongodb"
         environment: 
-            - MONGO_INITDB_DATABASE=mongo-database 
-            - MONGO_INITDB_ROOT_USERNAME=root 
-            - MONGO_INIT_ROOT_PASSWORD=tiger
-        volumes:
-            - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-            - ./mongo-volume:/data/db 
+            MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+            MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
         ports:
             - "27017:27017"
+        build: ./
+        
+
