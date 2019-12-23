@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/head %>
+</head>
+
+<div class="container Accueil">
+    <header class="Accueil-Header">
+        <h1>SIGN IN</h1>
+    </header>
+
+    <div>
+        <form id="form">
+            <p> Name </p>
+            <input type="text" id="user_name"/>
+            <p> Password </p>
+            <input type="password" id="user_pwd"/>
+            <button type="submit"> Sign Out </button>
+        </form>
+    </div>
+
+</div>
+<script>
+    $("#show-metrics").click(e => {
+        e.preventDefault();
+        $.getJSON("/metrics.json", {}, data => {
+            const content = data.map(d => {
+                return "timestamp: " + d.timestamp + ", value: " + d.value + "";
+            });
+            $("#metrics").append(content.join("\n"));
+        });
+    });
+    $('#form').submit(e => {
+        e.preventDefault();
+        const DataSignIn = new FormData(e.target);
+        
+    })
+</script>
+</body>
+
+</html>

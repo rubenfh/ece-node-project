@@ -2,6 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var metrics_1 = require("./metrics");
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback() {
+    console.log("h");
+});
 var app = express(), handles = require("./handles"), path = require("path"), metrics = require("./metrics");
 var port = process.env.PORT || "8080";
 app.set("views", __dirname + "/views");
@@ -17,6 +24,9 @@ app.get("/metrics.json", function (req, res) {
         res.json(result);
     });
 });
+exports.test = function (req, res) {
+    res.render('test');
+};
 app.listen(port, function (err) {
     if (err) {
         throw err;

@@ -7,28 +7,22 @@ var f_welcome = function () {
 var f_404 = function () {
     return "\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <meta charset=\"utf-8\" />\n        <title>Page not found</title>\n      </head>\n      <body>\n        <h1>Error 404 : Page not found</h1>\n      </body>\n    </html>\n  ";
 };
-var f_g = function () {
-    return "\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <meta charset=\"utf-8\" />\n        <title>Hello Boss</title>\n      </head>\n      <body>\n        <h1>Hello guillaume, you're the designer of this nodejs server</h1>\n      </body>\n    </html>\n  ";
-};
 Router.get("/", function (req, res) {
     res
         .type("html")
         .status(200)
-        .send(f_welcome());
+        .render("homepage.ejs");
 });
-Router.get("/hello", function (req, res) {
-    if (req.query.name) {
-        res.render("hello.ejs", {
-            name: req.query.name === "guillaume"
-                ? "Guillaume, designer of this page"
-                : req.query.name
-        });
-    }
-    else {
-        res
-            .type("html")
-            .status(404)
-            .send(f_404());
-    }
+Router.get("/signin", function (req, res) {
+    res
+        .type("html")
+        .status(200)
+        .render("signin.ejs");
+});
+Router.get("/signout", function (req, res) {
+    res
+        .type("html")
+        .status(200)
+        .render("signout.ejs");
 });
 module.exports = Router;

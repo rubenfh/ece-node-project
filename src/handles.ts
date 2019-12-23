@@ -48,7 +48,13 @@ Router.get("/signin", (req: any, res: any) => {
         .type("html")
         .status(200)
         .render("signin.ejs")
-        
+});
+
+Router.get("/signout", (req: any, res: any) => {
   
+  res
+      .type("html")
+      .status(200)
+      .render("signout.ejs")
 });
 module.exports = Router;

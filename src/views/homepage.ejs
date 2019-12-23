@@ -17,6 +17,7 @@
         <div class="btn">
             Sign up
         </div>
+        <input type="button" id="but_signout" name="Sign In">
         </Link>
     </p>
 
@@ -25,11 +26,14 @@
         <div class="btn">
             Sign in
         </div>
+        <input type="button" id="but_signin" name="Sign In">
         </Link>
     </p>
 
 </div>
     <script>
+        
+
         $("#show-metrics").click(e => {
             e.preventDefault();
             $.getJSON("/metrics.json", {}, data => {
@@ -39,6 +43,18 @@
                 $("#metrics").append(content.join("\n"));
             });
         });
+        $('#but_signin').click(e => {
+            e.preventDefault();
+            const myURL = new URL('http://localhost:8080/signin');
+            window.location.replace("/signin");
+            console.log(myURL);
+        });
+        $('#but_signout').click(e => {
+            e.preventDefault();
+            const myURL = new URL('http://localhost:8080/signin');
+            window.location.replace("/signout");
+            console.log(myURL);
+        })
     </script>
 </body>
 
