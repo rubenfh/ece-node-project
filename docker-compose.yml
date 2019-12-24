@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+    web:
+        build: ./
+        ports:
+            - "8080:8080"
+        volumes:
+            - "./src:/code/src"
+        container_name: web11
+
+    mongodb:
+        image: "mongo"
+        container_name: mongodb11
+        
+
